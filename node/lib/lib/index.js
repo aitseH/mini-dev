@@ -1,10 +1,17 @@
 'use strict';
 
-var _test = require('./test');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.foo = undefined;
 
-var _test2 = _interopRequireDefault(_test);
+var _foo = require('./foo');
+
+var _foo2 = _interopRequireDefault(_foo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_test2.default);
-console.log(_test.test01, _test.test02);
+exports.foo = _foo2.default;
+exports.default = {
+  foo: _foo2.default
+};

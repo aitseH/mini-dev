@@ -1,4 +1,9 @@
-import Test, {test01, test02} from './test'
+import foo from './foo'
 
-console.log(Test)
-console.log(test01, test02)
+export {
+  foo
+}
+
+export default {
+  foo
+}
