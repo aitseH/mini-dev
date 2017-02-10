@@ -12,8 +12,8 @@ const validate = pify(joi.validate)
 const encrypt = pify(bcrypt)
 
 
-const createToken = (info) => {
-  let token = jwt.sign({foo: info}, tokenSecret, {
+const createToken = (data) => {
+  let token = jwt.sign(data, tokenSecret, {
     expiresIn: tokenExpiresIn
   })
   return token
@@ -31,7 +31,13 @@ const verifyToken = (token) => {
   }
 } 
 
+const validateEmail = (email) => {
+  let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  return re.test(email)
+}
+
 export {
+  validateEmail,
   createToken,
   verifyToken,
   validate,
