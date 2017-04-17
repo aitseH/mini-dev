@@ -1,19 +1,16 @@
-# Set the base image to Ubuntu
-FROM node:boron
+FROM mhart/alpine-node:base-6
 
 MAINTAINER nanoo
 
-# Provides cached layer for node_modules
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm install
-RUN mkdir -p /app && cp -a /tmp/node_modules /app/
+RUN apk add --no-cache make gcc g++ python
 
-# Define working directory
+RUN mkdir -p /app
 WORKDIR /app
-ADD . /app
 
-# Expose port
+COPY package.json /app
+RUN npm install
+
+COPY . /app
+
 EXPOSE  8080
-
-# Run app using nodemon
 CMD ["npm","start"]
